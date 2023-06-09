@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>我是跑马灯</title>
+  </head>
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <body>
+    <div
+      id="scrollobj"
+      style="
+        position: absolute;
+        left: 50%;
+        margin-left: -230px;
+        top: 0;
+        width: 560px;
+        line-height: 30px;
+        white-space: nowrap;
+        overflow: hidden;
+        color: #f00;
+      "
+    >
+      温馨提示：2019年2月4日当天最晚配送时间为下午18：00，给您带来不便，还望见谅！　　　
+    </div>
+
+    <script type="text/javascript">
+      let wrapId = document.getElementById('scrollobj');
+      function scroll(obj) {
+        let tmp = obj.scrollLeft++;
+        if (obj.scrollLeft == tmp) obj.innerHTML += obj.innerHTML;
+        if (obj.scrollLeft >= obj.firstChild.offsetWidth) obj.scrollLeft = 0;
+      }
+      let timer = setInterval('scroll(wrapId)', 50);
+      wrapId.onmouseover = function () {
+        window.clearInterval(timer);
+      };
+      wrapId.onmouseout = function () {
+        timer = window.setInterval('scroll(wrapId)', 50);
+      };
+    </script>
+  </body>
+</html>
